@@ -1,1 +1,18 @@
-<p>home-page works!</p>
+<h2>Cars for rent:</h2>
+<div class="cars-container container row row-cols-3">
+  @for(car of cars; track car) {
+  <div>
+    <div class="card mb-3" style="width: 25rem">
+      <img src="./images/auto-431122_640.jpg" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+        <p class="card-text">
+          You can rent this car with {{ car.seats }} seats for
+          {{ car.pricePerDay }} Euros per day.
+        </p>
+        <a href="#" class="btn btn-primary">Get your offer!</a>
+      </div>
+    </div>
+  </div>
+  }
+</div>
