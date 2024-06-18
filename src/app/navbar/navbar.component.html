@@ -33,6 +33,11 @@
             Donated sum: <span class="donated-sum ms-4">{{ donatedSum }}</span>
           </p>
         </li>
+        @if( donatedSum > 200) {
+        <li class="nav-item">
+          <span class="vip ms-4">{{ message }}</span>
+        </li>
+        }
       </ul>
     </div>
   </div>

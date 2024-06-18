@@ -7,12 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   donatedSum: number = 0;
-
+  message?: string = 'Congratulations! You are a VIP!';
   increaseDonation() {
     this.donatedSum += 10;
-
-    // let sumAnchor = document.querySelector(".donated-sum") as HTMLElement
-
-    // sumAnchor.innerHTML = this.donatedSum;
   }
 }
