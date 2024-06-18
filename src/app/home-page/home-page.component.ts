@@ -20,10 +20,10 @@ export class HomePageComponent {
   ];
 
   addCar = new FormGroup({
-    brand: new FormControl(''),
-    model: new FormControl(''),
-    seats: new FormControl(''),
-    pricePerDay: new FormControl(''),
+    brand: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    model: new FormControl('', Validators.required),
+    seats: new FormControl('', [Validators.required, Validators.max(5)]),
+    pricePerDay: new FormControl('', Validators.required),
   });
 
   onSubmit() {

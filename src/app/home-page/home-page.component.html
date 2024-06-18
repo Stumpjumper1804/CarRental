@@ -1,42 +1,111 @@
-<h2>Cars for rent:</h2>
-<div class="cars-container container row row-cols-3">
-  @for(car of cars; track car) {
-  <div>
-    <div class="card mb-3" style="width: 25rem">
-      <img src="./images/auto-431122_640.jpg" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
-        <p class="card-text">
-          You can rent this car with {{ car.seats }} seats for
-          {{ car.pricePerDay }} Euros per day.
-        </p>
-        <a href="#" class="btn btn-primary">Get your offer!</a>
+<div class="main-container container">
+  <h2>Cars for rent:</h2>
+  <div
+    class="cars-container container mx-auto row row-cols-1 row-cols-md-2 row-cols-lg-3"
+  >
+    @for(car of cars; track car) {
+    <div class="">
+      <div class="card mb-3">
+        <img
+          src="./images/auto-431122_640.jpg"
+          class="card-img-top img-fluid"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+          <p class="card-text">
+            You can rent this car with {{ car.seats }} seats for
+            {{ car.pricePerDay }} Euros per day.
+          </p>
+          <a href="#" class="btn btn-primary">Get your offer!</a>
+        </div>
       </div>
     </div>
+    }
   </div>
-  }
-</div>
 
-<!--add form to add new cars-->
-<!-- <app-add-car-form></app-add-car-form> -->
-<div class="w-50 mx-auto">
-  <p>Add new rental cars with this form. Enter the required informations:</p>
+  <!--add form to add new cars-->
+  <!-- <app-add-car-form></app-add-car-form> -->
+  <div class="w-50 mx-auto">
+    <p>Add new rental cars with this form. Enter the required informations:</p>
 
-  <form [formGroup]="addCar" (ngSubmit)="onSubmit()">
-    <label for="brand">Brand: </label>
-    <input id="brand" type="text" formControlName="brand" /><br />
+    <form [formGroup]="addCar" (ngSubmit)="onSubmit()">
+      <!--brand-->
+      <label for="brand">Brand: </label>
+      <input id="brand" type="text" formControlName="brand" /><br />
 
-    <label for="model">Model: </label>
-    <input id="model" type="text" formControlName="model" /><br />
+      <div
+        *ngIf="
+          addCar.controls.brand.invalid &&
+          (addCar.controls.brand.dirty || addCar.controls.brand.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addCar.controls.brand.hasError('required')">
+          The brand is required.
+        </div>
+        <div *ngIf="addCar.controls.brand.hasError('minlength')">
+          The brand name must be at least 2 characters long.
+        </div>
+      </div>
+      <!--model-->
+      <label for="model">Model: </label>
+      <input id="model" type="text" formControlName="model" /><br />
 
-    <label for="seats">Seats: </label>
-    <input id="seats" type="text" formControlName="seats" /><br />
+      <div
+        *ngIf="
+          addCar.controls.model.invalid &&
+          (addCar.controls.model.dirty || addCar.controls.model.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addCar.controls.model.hasError('required')">
+          The model is required.
+        </div>
+      </div>
+      <!--seats-->
+      <label for="seats">Seats: </label>
+      <input id="seats" type="number" formControlName="seats" /><br />
 
-    <label for="pricePerDay">Price per Day: </label>
-    <input id="pricePerDay" type="text" formControlName="pricePerDay" />
+      <div
+        *ngIf="
+          addCar.controls.seats.invalid &&
+          (addCar.controls.seats.dirty || addCar.controls.seats.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addCar.controls.seats.hasError('required')">
+          The number of seats is required.
+        </div>
+        <div *ngIf="addCar.controls.seats.hasError('max')">
+          The maximum number of seats is 5.
+        </div>
+      </div>
+      <!--price-->
+      <label for="pricePerDay">Price per Day: </label>
+      <input id="pricePerDay" type="number" formControlName="pricePerDay" />
 
-    <button class="btn btn-success d-block" type="submit" value="addCar">
-      Add the car
-    </button>
-  </form>
+      <div
+        *ngIf="
+          addCar.controls.pricePerDay.invalid &&
+          (addCar.controls.pricePerDay.dirty ||
+            addCar.controls.pricePerDay.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addCar.controls.pricePerDay.hasError('required')">
+          The price per day is required.
+        </div>
+      </div>
+
+      <button
+        class="btn btn-success d-block"
+        type="submit"
+        [disabled]="!addCar.valid"
+        value="addCar"
+      >
+        Add the car
+      </button>
+    </form>
+  </div>
 </div>
