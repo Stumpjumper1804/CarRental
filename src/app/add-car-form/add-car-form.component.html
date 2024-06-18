@@ -1,0 +1,19 @@
+<div class="w-50 mx-auto">
+  <p>Add new rental cars with this form. Enter the required informations:</p>
+
+  <form [formGroup]="addCar" (ngSubmit)="onSubmit()">
+    <label for="brand">Brand: </label>
+    <input id="brand" type="text" formControlName="brand" /><br />
+
+    <label for="model">Model: </label>
+    <input id="model" type="text" formControlName="model" /><br />
+
+    <label for="seats">Seats: </label>
+    <input id="seats" type="text" formControlName="seats" /><br />
+
+    <label for="pricePerDay">Price per Day: </label>
+    <input id="pricePerDay" type="text" formControlName="pricePerDay" />
+
+    <button class="btn btn-success d-block" type="submit">Add the car</button>
+  </form>
+</div>

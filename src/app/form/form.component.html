@@ -1,5 +1,5 @@
 <div class="w-50 mx-auto mt-5">
-  <form [formGroup]="addCar" (ngSubmit)="onSubmit()">
+  <form [formGroup]="feedback" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="email" class="form-label">Email address</label>
       <input
@@ -11,12 +11,12 @@
       />
     </div>
     <div class="mb-3">
-      <label for="feedback" class="form-label">Write your message</label>
+      <label for="message" class="form-label">Write your message</label>
       <textarea
         class="form-control"
-        id="exampleFormControlTextarea1"
+        id="message"
         rows="3"
-        formControlName="feedback"
+        formControlName="message"
       ></textarea>
     </div>
     <button type="submit" class="btn btn-success">Submit</button>

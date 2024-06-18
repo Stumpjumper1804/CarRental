@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -17,4 +18,18 @@ export class HomePageComponent {
     { brand: 'VW', model: 'Golf', seats: 5, pricePerDay: 90 },
     { brand: 'Mercedes', model: 'A200', seats: 4, pricePerDay: 120 },
   ];
+
+  addCar = new FormGroup({
+    brand: new FormControl(''),
+    model: new FormControl(''),
+    seats: new FormControl(''),
+    pricePerDay: new FormControl(''),
+  });
+
+  onSubmit() {
+    console.log(this.addCar.value);
+    let newCar: any = this.addCar.value;
+    this.cars.push(newCar);
+    this.addCar.reset();
+  }
 }

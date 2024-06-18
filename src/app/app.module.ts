@@ -9,6 +9,7 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { AddCarFormComponent } from './add-car-form/add-car-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormComponent } from './form/form.component';
     ContactPageComponent,
     FooterComponent,
     FormComponent,
+    AddCarFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

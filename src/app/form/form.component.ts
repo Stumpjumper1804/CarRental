@@ -7,11 +7,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './form.component.css',
 })
 export class FormComponent {
-  addCar = new FormGroup({
-    brand: new FormControl(''),
-    model: new FormControl(''),
-    seats: new FormControl(''),
-    pricePerDay: new FormControl(''),
+  feedback = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    message: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
   });
 
   onSubmit() {
