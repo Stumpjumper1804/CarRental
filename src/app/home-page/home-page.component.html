@@ -24,15 +24,24 @@
     }
   </div>
 
+  <hr />
+
   <!--add form to add new cars-->
   <!-- <app-add-car-form></app-add-car-form> -->
-  <div class="w-50 mx-auto">
-    <p>Add new rental cars with this form. Enter the required informations:</p>
+  <div class="w-50 my-4 p-3 bg-body-tertiary border border-dark border-1">
+    <p class="h4 mb-3">
+      Add new rental cars with this form. Enter the required informations:
+    </p>
 
     <form [formGroup]="addCar" (ngSubmit)="onSubmit()">
       <!--brand-->
-      <label for="brand">Brand: </label>
-      <input id="brand" type="text" formControlName="brand" /><br />
+      <label for="brand" class="form-label">Brand: </label>
+      <input
+        id="brand"
+        class="form-control"
+        type="text"
+        formControlName="brand"
+      /><br />
 
       <div
         *ngIf="
@@ -49,8 +58,13 @@
         </div>
       </div>
       <!--model-->
-      <label for="model">Model: </label>
-      <input id="model" type="text" formControlName="model" /><br />
+      <label for="model" class="form-label">Model: </label>
+      <input
+        id="model"
+        class="form-control"
+        type="text"
+        formControlName="model"
+      /><br />
 
       <div
         *ngIf="
@@ -64,8 +78,13 @@
         </div>
       </div>
       <!--seats-->
-      <label for="seats">Seats: </label>
-      <input id="seats" type="number" formControlName="seats" /><br />
+      <label for="seats" class="form-label">Seats: </label>
+      <input
+        id="seats"
+        class="form-control"
+        type="number"
+        formControlName="seats"
+      /><br />
 
       <div
         *ngIf="
@@ -82,8 +101,13 @@
         </div>
       </div>
       <!--price-->
-      <label for="pricePerDay">Price per Day: </label>
-      <input id="pricePerDay" type="number" formControlName="pricePerDay" />
+      <label for="pricePerDay" class="form-label">Price per Day: </label>
+      <input
+        id="pricePerDay"
+        class="form-control"
+        type="number"
+        formControlName="pricePerDay"
+      />
 
       <div
         *ngIf="
@@ -99,7 +123,7 @@
       </div>
 
       <button
-        class="btn btn-success d-block"
+        class="btn btn-success d-block mt-4"
         type="submit"
         [disabled]="!addCar.valid"
         value="addCar"

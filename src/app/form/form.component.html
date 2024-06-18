@@ -1,6 +1,7 @@
 <div class="w-50 mx-auto mt-5">
   <form [formGroup]="feedback" (ngSubmit)="onSubmit()">
     <div class="mb-3">
+      <!--email-->
       <label for="email" class="form-label">Email address</label>
       <input
         type="email"
@@ -9,8 +10,24 @@
         placeholder="name@example.com"
         formControlName="email"
       />
+      <div
+        *ngIf="
+          feedback.controls.email.invalid &&
+          (feedback.controls.email.dirty || feedback.controls.email.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="feedback.controls.email.hasError('required')">
+          The email address is required.
+        </div>
+        <div *ngIf="feedback.controls.email.hasError('email')">
+          Please enter a correct email address.
+        </div>
+      </div>
     </div>
     <div class="mb-3">
+      <!--message-->
+
       <label for="message" class="form-label">Write your message</label>
       <textarea
         class="form-control"
@@ -18,7 +35,23 @@
         rows="3"
         formControlName="message"
       ></textarea>
+      <div
+        *ngIf="
+          feedback.controls.message.invalid &&
+          (feedback.controls.message.dirty || feedback.controls.message.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="feedback.controls.message.hasError('required')">
+          Please enter a text message.
+        </div>
+        <div *ngIf="feedback.controls.message.hasError('minlength')">
+          The message name must be at least 30 characters long.
+        </div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" [disabled]="!feedback.valid" class="btn btn-success">
+      Submit
+    </button>
   </form>
 </div>

@@ -11,11 +11,12 @@ export class FormComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     message: new FormControl('', [
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(30),
     ]),
   });
 
   onSubmit() {
     alert('Your meesage has been sent!');
+    this.feedback.reset();
   }
 }
